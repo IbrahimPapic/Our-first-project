@@ -2,7 +2,8 @@ import { createElement, useEffect, useReducer, useState } from 'react';
 import './App.css';
 import Cards from './components/NewsCard/NewsCard';
 import axios from 'axios';
-import techCrunch from './assets/techCrunch.webp';
+import banner from './assets/tc-lockup.svg';
+import logo from './assets/tc-logo.svg';
 
 
   // const hotel = [
@@ -574,24 +575,33 @@ function App() {
 
 
   return (
-    <div>
+    <div style={{backgroundColor:""}}>
       <div className='header'>
-        <h1 className='logo'>TechCrunch</h1>
+        <h1 className='logo'><img
+        src={logo}
+        />
+        TechCrunch</h1>
         <ul className='list'>
-          <li>Latest</li>
-          <li>Startups</li>
-          <li>Venture</li>
-          <li>Apple</li>
-          <li>Security</li>
-          <li>AI</li>
-          <li>Apps</li>
+          <li><a href='https://techcrunch.com/latest/'>Latest</a></li>
+          <li><a href='https://techcrunch.com/category/startups/'>Startups</a></li>
+          <li><a href='https://techcrunch.com/category/venture/'>Venture</a></li>
+          <li><a href='https://techcrunch.com/tag/apple/'>Apple</a></li>
+          <li><a href='https://techcrunch.com/category/security/'>Security</a></li>
+          <li><a href='https://techcrunch.com/category/artificial-intelligence/'>AI</a></li>
+          <li><a href='https://techcrunch.com/category/apps/'>Apps</a></li>
         </ul>
-        <p className='signUp'>Sign up</p>
+
+
+        <a href='https://login.techcrunch.com/?src=techcrunch&client_id=dj0yJmk9Ykh1ZTdaUEJPRHhJJmQ9WVdrOVFsWTJjV0YwTldFbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD1jNw--&crumb=akvEA9Rn7j7&redirect_uri=https%3A%2F%2Foidc.techcrunch.com%2Fcallback&done=https%3A%2F%2Fapi.login.techcrunch.com%2Foauth2%2Fauthorize%3Fclient_id%3Ddj0yJmk9Ykh1ZTdaUEJPRHhJJmQ9WVdrOVFsWTJjV0YwTldFbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD1jNw--%26nonce%3D2mU6yBoXllwuMCGNvdD3jxKUAFzXU833%26redirect_uri%3Dhttps%253A%252F%252Foidc.techcrunch.com%252Fcallback%26response_type%3Dcode%26scope%3Dopenid%2Bguce-w%2Bopenid2%2Bsdps-r%26src%3Dtechcrunch%26state%3DeyJhbGciOiJSUzI1NiIsImtpZCI6IjZmZjk0Y2RhZDExZTdjM2FjMDhkYzllYzNjNDQ4NDRiODdlMzY0ZjcifQ.eyJyZWRpcmVjdFVyaSI6Imh0dHBzOi8vdGVjaGNydW5jaC5jb20vbGF0ZXN0LyJ9.gfxr6ixs_TfSQ1F8SNDoKTNvgNyY0i8ZDxM_fu3bm-QodKvQbCRbE3MmYlU0MvrVUln-4bkJwM9mGieA8Jx6np2RaPvV790wBPddoQBTLhnETH1uzffnsEK9PJN5tNI9IK6Sot2LgERBjkK4eFhJReV3mFypg-rXlb2kplTKqWA' 
+        className='signUp'>
+        Sign in</a>
+        
       </div>
+      
       <div className='baner'>
         <img 
-        src={techCrunch}
-        style={{width:"100%"}}
+        src={banner}
+        style={{width:"100%", height: "70vh"}}
         />
       </div>
 
@@ -617,15 +627,39 @@ function App() {
       ) : (
         <p className='loading'>Loading...</p>
       )}
+
+      <div className='footer'>
+        <img 
+        className='logo'
+        src={logo}
+        />
+        <ul className='list'>
+        <li>TechCrunch</li>
+        <li>Staff</li>
+        <li>Contact Us</li>
+        <li>Advertise</li>
+        <li>Crunchboard Jobs</li>
+        <li>Site Map</li>
+        </ul>
+        <ul className='list' style={{right:"20%"}}>
+        <li>Terms of Service</li>
+        <li>Privacy Policy</li>
+        <li>RSS Terms of Use</li>
+        <li>Privacy & Cookie Settings</li>
+        <li>Code of Conduct</li>
+        <li>About Our Ads</li>
+
+        </ul>
+        <p className='original'>© 2024 Yahoo.</p>
+      </div>
+
+
+
+
+
     </div>
     //next.js
-
-
-
-
   )
-
-
 }
 export default App;
 
