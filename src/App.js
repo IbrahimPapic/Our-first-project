@@ -1,6 +1,8 @@
 import { createElement, useEffect, useReducer, useState } from 'react';
 import './App.css';
 import Cards from './components/NewsCard/NewsCard';
+import axios from 'axios';
+import techCrunch from './assets/techCrunch.webp';
 
 
   // const hotel = [
@@ -197,32 +199,30 @@ import Cards from './components/NewsCard/NewsCard';
 
 
 // Sign IN FORMA
-function App() {
+// function App() {
   
-  const [usersList, setUsersList] = useState([]);
-  const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    age: "Age",
-    phone: "",
-    gender: null,
-  });
+//   const [usersList, setUsersList] = useState([]);
+//   const [user, setUser] = useState({
+//     firstName: "",
+//     lastName: "",
+//     email: "",
+//     age: "Age",
+//     phone: "",
+//     gender: "",
+//   });
 
-//     .then((data) => data.todos)
-//     .then((todos) => setZadaci(todos))
-//     .finally(() => setLoading(false));
-  const [loading, setLoading] = useState(false);
+//   const [loading, setLoading] = useState(false);
 
-
-  const [fetched, setfetched] = useState([]);
-  useEffect(() => {
-        setLoading(true);
-    fetch('https://dummyjson.com/users')
-    .then(res => res.json())
-    .then((data) => setfetched(data.users))
-        .finally(() => setLoading(false));    
-      }, []);
+//   const [fetched, setfetched] = useState([]);
+//   useEffect(() => {
+//         setLoading(true);
+//     // fetch('https://dummyjson.com/users')
+//     fetch("https://dummyjson.com/users?limit=10")
+//     .then(res => res.json())
+//     .then((data) => setfetched(data.users))
+//     // .then((data) => setUsersList(data.users))
+//       .finally(() => setLoading(false));    
+//       }, []);
       
       
       
@@ -230,185 +230,185 @@ function App() {
 
   
   
-  const handleInputChange = (event) => {
-    const { name, value} = event.target;
-    setUser((prev) => ({...prev, [name]: value}))
-  };
+//   const handleInputChange = (event) => {
+//     const { name, value} = event.target;
+//     setUser((prev) => ({...prev, [name]: value}))
+//   };
 
 
 
-  const handleClick = () => {
-      // setUser((prev), ({...prev, gender=""}))
-      setUser((prevUser) => ({ ...prevUser, gender: "" }));
+//   const handleClick = () => {
+//       // setUser((prev), ({...prev, gender=""}))
+//       setUser((prevUser) => ({ ...prevUser, gender: "" }));
 
-    if(user.firstName && user.lastName && user.email && user.age && user.phone && user.gender){
+//     if(user.firstName && user.lastName && user.email && user.age && user.phone && user.gender){
       
-      if((user.age) < 18){
-        alert("Morate imati preko 18 godina.");
+//       if((user.age) < 18){
+//         alert("Morate imati preko 18 godina.");
 
-      }else{
+//       }else{
 
-        setUsersList([...usersList, user]);
-        setUser({ firstName: "", lastName: "", email: "", age: "Age", phone: "", gender: "" });    
-      }
+//         setUsersList([...usersList, user]);
+//         setUser({ firstName: "", lastName: "", email: "", age: "Age", phone: "", gender: "" });    
+//       }
       
-      } else {
-        alert("Molimo Vas unesite sve podatke!!!")
-      }};
+//       } else {
+//         alert("Molimo Vas unesite sve podatke!!!")
+//       }};
     
   
 
-    const ageOptions = [12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27];
+//     const ageOptions = [12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27];
     
 
   
-  return( <div className='container'>
-    <div className='forma'>
-      <h1>Sign up</h1>
+//   return( <div className='container'>
+//     <div className='forma'>
+//       <h1>Sign up</h1>
 
-      <div>
+//       <div>
 
-      <input 
-      type='text' 
-      name='firstName' 
-      value={user.firstName} 
-      onChange={handleInputChange}
-      placeholder='Ime'>
-      </input>
+//       <input 
+//       type='text' 
+//       name='firstName' 
+//       value={user.firstName} 
+//       onChange={handleInputChange}
+//       placeholder='Ime'>
+//       </input>
 
-      <input 
-      type='text' 
-      name='lastName' 
-      value={user.lastName} 
-      onChange={handleInputChange}  
-      placeholder='Prezime'>
-      </input>
+//       <input 
+//       type='text' 
+//       name='lastName' 
+//       value={user.lastName} 
+//       onChange={handleInputChange}  
+//       placeholder='Prezime'>
+//       </input>
 
-      </div>
+//       </div>
 
-      <input 
-      type='email' 
-      name='email' 
-      value={user.email} 
-      onChange={handleInputChange} 
-      placeholder='E-mail'>
-      </input>
+//       <input 
+//       type='email' 
+//       name='email' 
+//       value={user.email} 
+//       onChange={handleInputChange} 
+//       placeholder='E-mail'>
+//       </input>
 
-      <input
-      type='number' 
-      name='phone' 
-      value={user.phone} 
-      onChange={handleInputChange} 
-      placeholder='Phone'>
-      </input>
-
-
+//       <input
+//       type='number' 
+//       name='phone' 
+//       value={user.phone} 
+//       onChange={handleInputChange} 
+//       placeholder='Phone'>
+//       </input>
 
 
-    <div style={{display:"flex",justifyContent:"center", alignItems:"center", gap:"20px"}}>
-    <p>Enter you Age:</p>
-    <select 
-    name="age" 
-    value={user.age} 
-    onChange={handleInputChange} 
-    className="select">
+
+
+//     <div style={{display:"flex",justifyContent:"center", alignItems:"center", gap:"20px"}}>
+//     <p>Enter you Age:</p>
+//     <select 
+//     name="age" 
+//     value={user.age} 
+//     onChange={handleInputChange} 
+//     className="select">
       
-      <option value="Age" disabled>
-      Age
-      </option> 
+//       <option value="Age" disabled>
+//       Age
+//       </option> 
         
 
-        {ageOptions.map(age => (
-        <option key={age} value={age}>
-          {age}
-        </option>
-        ))}
+//         {ageOptions.map(age => (
+//         <option key={age} value={age}>
+//           {age}
+//         </option>
+//         ))}
      
-     </select>
+//      </select>
 
-      </div>
+//       </div>
 
 
       
       
-      <div className='gender'>
-        <p>Gender:</p>
+//       <div className='gender'>
+//         <p>Gender:</p>
 
-      <label>
-      <input 
-      type="radio" 
-      name='gender' 
-      value="Male" 
-      onChange={handleInputChange} 
-      checked={user.gender === "Male"}
-      style={{marginBottom:"5px"}}/>
-      Male</label>
-
-
-      <label>
-      <input 
-      type="radio" 
-      name='gender' 
-      value="Female" 
-      onChange={handleInputChange} 
-      checked={user.gender === "Female"}
-      style={{marginBottom:"5px"}}/>
-      Female</label>
-
-      </div>
+//       <label>
+//       <input 
+//       type="radio" 
+//       name='gender' 
+//       value="Male" 
+//       onChange={handleInputChange} 
+//       checked={user.gender === "Male"}
+//       style={{marginBottom:"5px"}}/>
+//       Male</label>
 
 
-      <button onClick={handleClick} className='signup'>Sign up</button>
-    </div>
+//       <label>
+//       <input 
+//       type="radio" 
+//       name='gender' 
+//       value="Female" 
+//       onChange={handleInputChange} 
+//       checked={user.gender === "Female"}
+//       style={{marginBottom:"5px"}}/>
+//       Female</label>
+
+//       </div>
 
 
-    <div className="cards">
-      <div className='profil'>
-        <h2>Profil</h2>
-        <p>Name: Ibrahim</p>
-        <p>Last Name: Papic</p>
-        <p>E-mail: Ibrahmim@gmail.com</p>
-        <p>Phone: 062 1150 679</p>
-        <p>Age: 18</p>
-        <p>Gender: Male</p>
-      </div>
-        {usersList.map((user) => (
-          <div key={user.id} className="profil">
-            <h2>Profil</h2>
-            <p>Name: {user.firstName}</p>
-            <p>Last Name: {user.lastName}</p>
-            <p>E-mail: {user.email}</p>
-            <p>Phone: {user.phone}</p>
-            <p>Age: {user.age}</p>
-            <p>Gender: {user.gender}</p>
-          </div>
-        ))}
-          {loading ? (
-            <h1 className='loading'>Fetcha podatke...</h1>
-          ) : (
-          fetched.map((user) => (
-          <div key={user.id} className="profil">
-            <h2>Profil</h2>
-            <p>Name: {user.firstName}</p>
-            <p>Last Name: {user.lastName}</p>
-            <p style={{lineHeight:"10px"}}>E-mail: {user.email}</p>
-            <p>Phone: {user.phone}</p>
-            <p>Age: {user.age}</p>
-            <p>Gender: {user.gender}</p>
-          </div>
-        )))}
+//       <button onClick={handleClick} className='signup'>Sign up</button>
+//     </div>
+
+
+//     <div className="cards">
+//       {/* <div className='profil'>
+//         <h2>Profil</h2>
+//         <p>Name: Ibrahim</p>
+//         <p>Last Name: Papic</p>
+//         <p>E-mail: Ibrahmim@gmail.com</p>
+//         <p>Phone: 062 1150 679</p>
+//         <p>Age: 18</p>
+//         <p>Gender: Male</p>
+//       </div> */}
+//         {usersList.map((user) => (
+//           <div key={user.id} className="profil">
+//             <h2>Profil</h2>
+//             <p>Name: {user.firstName}</p>
+//             <p>Last Name: {user.lastName}</p>
+//             <p>E-mail: {user.email}</p>
+//             <p>Phone: {user.phone}</p>
+//             <p>Age: {user.age}</p>
+//             <p>Gender: {user.gender}</p>
+//           </div>
+//         ))}
+//           {loading ? (
+//             <h1 className='loading'>Fetcha podatke...</h1>
+//           ) : (
+//           fetched.map((user) => (
+//           <div key={user.id} className="profil">
+//             <h2>Profil</h2>
+//             <p>Name: {user.firstName} {user.id}</p>
+//             <p>Last Name: {user.lastName}</p>
+//             <p style={{lineHeight:"10px"}}>E-mail: {user.email}</p>
+//             <p>Phone: {user.phone}</p>
+//             <p>Age: {user.age}</p>
+//             <p>Gender: {user.gender}</p>
+//           </div>
+//         )))}
 
         
 
       
-      </div>
+//       </div>
     
 
-   </div> 
-  );
+//    </div> 
+//   );
 
-}
-
+// }
+// export default App;
 
 // API pozivi
 // function App(){
@@ -455,5 +455,180 @@ function App() {
 // }
   
 
+//   const [broj, setBroj] = useState(0);
+//   const [zadaci, setZadaci] = useState([]);
+//   const [totalQuotes, setTotalQuotes] = useState(0);
+//   const [quotesPerPage, setQuotesPerPage] = useState(10);
+//   const [quotesPerPageNew, setQuotesPerPageNew] = useState(quotesPerPage);
 
+
+// function App(){
+//   useEffect(() => {
+//     axios
+//   .get("")
+//   .then((data) => {
+//   })
+
+//   }, [])
+
+
+
+
+// }
+
+
+
+// Pagination
+// function App(){
+
+//   const [broj, setBroj] = useState(0);
+//   const [zadaci, setZadaci] = useState({});
+//   const [totalQuotes, setTotalQuotes] = useState(0);
+//   const [loading, setLoading] = useState(false)
+//   const [quotesPerPage, setQuotesPerPage] = useState(10);
+//   const [quotesPerPageNew, setQuotesPerPageNew] = useState(1);
+
+//   useEffect(() => {
+//     console.log("pre");
+//     axios
+//       .get(`https://dummyjson.com/quotes/${quotesPerPageNew}`)
+//       .then((data) => {
+//         console.log(data.data);
+//         setTotalQuotes(data.data.total);
+//         setZadaci(data.data);
+//       });
+//     console.log("posle");
+//     setLoading(true);
+//     fetch("https://dummyjson.com/todos")
+//       .then((res) => {
+//         return res.json();
+//       })
+//       .then((data) => data.todos)
+//       .then((todos) => setZadaci(todos))
+//       .finally(() => setLoading(false));
+//     axios.get("https://dummyjson.com/todos").then((response) => {
+//       console.log(response);
+//       if (response.statusText === "Bad request") {
+//         alert("Nesot nje kako treba");
+//       }
+//       console.log(response.data);
+//       setZadaci(response.data.todos);
+//     });
+//   }, [broj, quotesPerPage]);
+
+//   return (
+//     <div
+//       className="container"
+//       style={{ fontSize: 32, justifyContent: "space-evenly" }}
+//     >
+//       <div>
+//         <h1>
+//           {broj + 1} / {Math.ceil(totalQuotes / quotesPerPage)}
+//         </h1>
+//       </div>
+//       <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+//         <button onClick={() => setBroj((prev) => prev + 1)}>
+//           Promeni stranicu
+//         </button>
+//         <input
+//           type="number"
+//           value={quotesPerPageNew}
+//           onChange={(event) => setQuotesPerPageNew(event.target.value)}
+//         />
+//         <button onClick={() => setQuotesPerPage(quotesPerPageNew)}>
+//           Promeni broj quots-a
+//         </button>
+//       </div>
+//       <div>
+        
+//         {zadaci.id}
+//         {zadaci.quote}
+//       </div>
+//       </div>
+
+
+// )
+// }
+// export default App;
+
+
+
+
+function App() {
+  
+  const [kartica, setKartica] = useState([]);
+
+  useEffect(() => {
+    axios
+    .get("https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=83d9e0d52b76473b8da947f92aa34ea1")
+    .then((response) => {
+    setKartica(response.data.articles)
+    console.log(response.data);
+    
+  })
+
+  }, [])
+
+
+
+
+
+  return (
+    <div>
+      <div className='header'>
+        <h1 className='logo'>TechCrunch</h1>
+        <ul className='list'>
+          <li>Latest</li>
+          <li>Startups</li>
+          <li>Venture</li>
+          <li>Apple</li>
+          <li>Security</li>
+          <li>AI</li>
+          <li>Apps</li>
+        </ul>
+        <p className='signUp'>Sign up</p>
+      </div>
+      <div className='baner'>
+        <img 
+        src={techCrunch}
+        style={{width:"100%"}}
+        />
+      </div>
+
+        {kartica.length > 0 ? (
+        kartica.map((kartica) => (
+          <div className='kartica'>
+
+            <img 
+            src={kartica.urlToImage}
+            style={{width: 250}}
+            />
+
+            <div className='text'>
+            <h1>{kartica.author}</h1>
+            <p style={{marginTop:10}}>{kartica.description}</p>
+            <p className='date'>{kartica.publishedAt}</p>
+            <p>{kartica.title}</p>
+            <a className='link' href={kartica.url}>{kartica.url}</a>
+            </div>
+            
+          </div>
+        ))  
+      ) : (
+        <p className='loading'>Loading...</p>
+      )}
+    </div>
+    //next.js
+
+
+
+
+  )
+
+
+}
 export default App;
+
+
+
+
