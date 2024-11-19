@@ -4,7 +4,7 @@ import Cards from './components/NewsCard/NewsCard';
 import axios from 'axios';
 import banner from './assets/tc-lockup.svg';
 import logo from './assets/tc-logo.svg';
-
+import { FaInstagram } from "react-icons/fa";
 
   // const hotel = [
   //   {
@@ -471,11 +471,8 @@ import logo from './assets/tc-logo.svg';
 //   })
 
 //   }, [])
-
-
-
-
 // }
+
 
 
 
@@ -573,7 +570,6 @@ function App() {
 
 
 
-
   return (
     <div style={{backgroundColor:""}}>
       <div className='header'>
@@ -605,24 +601,36 @@ function App() {
         />
       </div>
 
+
         {kartica.length > 0 ? (
         kartica.map((kartica) => (
+          <a href={kartica.url} style={{textDecoration:"none", color: "black"}}>
           <div className='kartica'>
 
             <img 
             src={kartica.urlToImage}
             style={{width: 250}}
             />
-
+{/* objectFit:cover */}
             <div className='text'>
             <h1>{kartica.author}</h1>
-            <p style={{marginTop:10}}>{kartica.description}</p>
+            <p 
+            style={{marginTop:10}}
+            >{kartica.description}
+            </p>
             <p className='date'>{kartica.publishedAt}</p>
-            <p>{kartica.title}</p>
-            <a className='link' href={kartica.url}>{kartica.url}</a>
+            <p>{kartica.title}
+            </p>
+
+            <a 
+            className='link' 
+            href={kartica.url}
+            >{kartica.url}
+            </a>
             </div>
-            
+          
           </div>
+          </a>
         ))  
       ) : (
         <p className='loading'>Loading...</p>
@@ -635,12 +643,14 @@ function App() {
         />
         <ul className='list'>
         <li>TechCrunch</li>
+        <FaInstagram />
         <li>Staff</li>
         <li>Contact Us</li>
         <li>Advertise</li>
         <li>Crunchboard Jobs</li>
         <li>Site Map</li>
         </ul>
+        {/* rfc */}
         <ul className='list' style={{right:"20%"}}>
         <li>Terms of Service</li>
         <li>Privacy Policy</li>
