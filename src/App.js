@@ -4,7 +4,16 @@ import Cards from './components/NewsCard/NewsCard';
 import axios from 'axios';
 import banner from './assets/tc-lockup.svg';
 import logo from './assets/tc-logo.svg';
-import { FaInstagram } from "react-icons/fa";
+import { FaInstagram, FaArrowCircleUp, FaYoutube, FaGithub, FaFacebook} from "react-icons/fa";
+import { IoMdMenu } from "react-icons/io";
+import { HiMiniMagnifyingGlass } from "react-icons/hi2";
+
+
+// FaGithub /></a></li>
+//           <li><a href='#'><FaInstagram /></a></li>
+//           <li><a href='#'><FaFacebook /></a></li>
+//           <li><a href='#'><FaXTwitter /></a></li>
+//           <li><a href='#'><FaYoutube
 
   // const hotel = [
   //   {
@@ -571,7 +580,7 @@ function App() {
 
 
   return (
-    <div style={{backgroundColor:""}}>
+    <div>
       <div className='header'>
         <h1 className='logo'><img
         src={logo}
@@ -587,10 +596,20 @@ function App() {
           <li><a href='https://techcrunch.com/category/apps/'>Apps</a></li>
         </ul>
 
-
+        <div className='menu'>
+        <button 
+        // onClick={
+        //   React.createElement('h1', null, 'Hello, World!'),
+        // }
+        style={{backgroundColor:"transparent", border:"0"}}
+        ><p><HiMiniMagnifyingGlass /></p></button>
+        <p><IoMdMenu /></p>
+        </div>
         <a href='https://login.techcrunch.com/?src=techcrunch&client_id=dj0yJmk9Ykh1ZTdaUEJPRHhJJmQ9WVdrOVFsWTJjV0YwTldFbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD1jNw--&crumb=akvEA9Rn7j7&redirect_uri=https%3A%2F%2Foidc.techcrunch.com%2Fcallback&done=https%3A%2F%2Fapi.login.techcrunch.com%2Foauth2%2Fauthorize%3Fclient_id%3Ddj0yJmk9Ykh1ZTdaUEJPRHhJJmQ9WVdrOVFsWTJjV0YwTldFbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD1jNw--%26nonce%3D2mU6yBoXllwuMCGNvdD3jxKUAFzXU833%26redirect_uri%3Dhttps%253A%252F%252Foidc.techcrunch.com%252Fcallback%26response_type%3Dcode%26scope%3Dopenid%2Bguce-w%2Bopenid2%2Bsdps-r%26src%3Dtechcrunch%26state%3DeyJhbGciOiJSUzI1NiIsImtpZCI6IjZmZjk0Y2RhZDExZTdjM2FjMDhkYzllYzNjNDQ4NDRiODdlMzY0ZjcifQ.eyJyZWRpcmVjdFVyaSI6Imh0dHBzOi8vdGVjaGNydW5jaC5jb20vbGF0ZXN0LyJ9.gfxr6ixs_TfSQ1F8SNDoKTNvgNyY0i8ZDxM_fu3bm-QodKvQbCRbE3MmYlU0MvrVUln-4bkJwM9mGieA8Jx6np2RaPvV790wBPddoQBTLhnETH1uzffnsEK9PJN5tNI9IK6Sot2LgERBjkK4eFhJReV3mFypg-rXlb2kplTKqWA' 
         className='signUp'>
         Sign in</a>
+        
+        
         
       </div>
       
@@ -600,7 +619,13 @@ function App() {
         style={{width:"100%", height: "70vh"}}
         />
       </div>
-
+        
+        <button 
+        onClick={() => window.scroll({ top: 0, behavior: "smooth" })}
+        className='arrow'>
+        <FaArrowCircleUp />
+        </button>
+        
 
         {kartica.length > 0 ? (
         kartica.map((kartica) => (
@@ -614,10 +639,14 @@ function App() {
 {/* objectFit:cover */}
             <div className='text'>
             <h1>{kartica.author}</h1>
-            <p 
+            {/* <p 
             style={{marginTop:10}}
             >{kartica.description}
-            </p>
+            </p> */}
+
+            {kartica.description.length > 170
+            ? `${kartica.description.substring(0, 167)}...`
+            : kartica.description}
             <p className='date'>{kartica.publishedAt}</p>
             <p>{kartica.title}
             </p>
@@ -641,9 +670,16 @@ function App() {
         className='logo'
         src={logo}
         />
+        <ul className='apps'>
+          <li><a href='https://github.com/IbrahimPapic' target='_blank'><FaGithub /></a></li>
+          <li><a href='#'><FaInstagram /></a></li>
+          <li><a href='#'><FaFacebook /></a></li>
+          <li><a href='#'><FaYoutube /></a></li>
+        </ul>
+
+
         <ul className='list'>
         <li>TechCrunch</li>
-        <FaInstagram />
         <li>Staff</li>
         <li>Contact Us</li>
         <li>Advertise</li>

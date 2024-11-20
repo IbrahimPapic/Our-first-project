@@ -229,14 +229,36 @@
     scale: 1.06;
     transition: 0.3s;
 }
+.menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-right: 40px;
+}
+.menu svg{
+    font-size: 22px;
+}
+.menu p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+.menu p:hover{
+    cursor: pointer;
+    border: 1px solid green;
+    color: white;
+}
 .signUp{
     border: 1px solid white;
     padding: 5px 10px; 
     border-radius: 20px;
-    position: absolute;
-    right: 100px;
     color: white;
     text-decoration: none;
+    margin-right: 40px;
 }
 .signUp:hover{
     cursor: pointer;
@@ -258,6 +280,7 @@
     margin: 30px;
     padding: 20px;
     background-color: lightgreen;
+    width: 91%;
 }
 .text{
     margin-left: 30px;
@@ -300,4 +323,53 @@
     position: absolute;
     left: 50px;
     bottom: 50px;
+}
+.arrow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 30px;
+    height: 50px;
+    width: 50px;
+    border: 0;
+    background-color: #212623;
+    border-radius: 50%;
+    position: fixed;
+    right: 10px;
+    bottom: 5px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.apps{
+    display: flex;
+    position: absolute;
+    top: 150px;
+    left: 50px;
+    gap: 30px;
+    font-size: 32px;
+    color: white;
+    list-style: none;
+}
+.apps li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    padding: 5px;
+    padding-bottom: 1px;
+    border: 0px solid green;
+    border-radius: 50%;
+}
+.apps li:hover{
+    cursor: pointer;
+    border: 1px solid green;
+    color: white;
+    scale: 1.05;
+    transition: 0.7s;
+}
+svg{
+    color: white;
 }
